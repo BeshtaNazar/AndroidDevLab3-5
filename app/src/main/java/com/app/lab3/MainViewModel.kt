@@ -1,18 +1,16 @@
 package com.app.lab3
 
 import android.app.Application
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.app.lab3.model.Student
-import java.time.LocalDate
-import java.util.Date
+import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val repo = (application as MyApp).studentRepository
     private var _myList: MutableLiveData<List<Student>> =
         MutableLiveData<List<Student>>().apply {
             value = emptyList()
@@ -27,10 +25,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             Student("Віталій", "Ковальчук", "1988-05-05", "380951234567", 62.9),
             Student("Ірина", "Сидоренко", "1992-07-10", "380931234567", 97.4),
             Student("Максим", "Григоренко", "1983-10-18", "380921234567", 76.8),
-            Student("Юлія","Ковальчук", "1995-09-03","380901234567", 89.1),
-            Student("Олександр","Шевченко", "1987-12-14","380881234567", 64.7)
+            Student("Юлія", "Ковальчук", "1995-09-03", "380901234567", 89.1),
+            Student("Олександр", "Шевченко", "1987-12-14", "380881234567", 64.7)
         )
-    init{
-        _myList.value = studentsList
+
+    init {
+        viewModelScope.launch {
+            repo.clearStudents()
+            repo.insertStudents(studentsList)
+            _myList.value = repo.getAllStudents()
+
+        }
     }
 }

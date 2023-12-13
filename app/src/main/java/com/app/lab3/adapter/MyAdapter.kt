@@ -21,11 +21,11 @@ class MyAdapter(private val myList: LiveData<List<Student>>) :
     }
 
     override fun onBindViewHolder(holder: MyAdapter.MyHolder, position: Int) {
-        return holder.bind(myList.value!![position])
+        return holder.bind(myList.value?.get(position) ?: return)
     }
 
     override fun getItemCount(): Int {
-        return myList.value!!.size
+        return myList.value?.size ?: 0
     }
 
     abstract class MyHolder(itemBinding: ViewBinding) : RecyclerView.ViewHolder(itemBinding.root) {

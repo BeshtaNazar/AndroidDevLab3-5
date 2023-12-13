@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         vm = ViewModelProvider(this)[MainViewModel::class.java]
         val myAdapter = MyAdapter(vm.myList)
         rv.adapter = myAdapter
-        rv.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+        rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        vm.myList.observe(this){
+            myAdapter.notifyDataSetChanged()
+        }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="20dp"
@@ -10,13 +11,17 @@
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="first name"
         android:layout_weight="1"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:ignore="HardcodedText" />
     <TextView
         android:id="@+id/studentSecondName"
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="second name"
+        tools:ignore="HardcodedText"
         android:layout_weight="1"
         android:layout_height="wrap_content"/>
     <TextView
@@ -24,6 +29,8 @@
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="birth date"
+        tools:ignore="HardcodedText"
         android:layout_weight="1"
         android:layout_height="wrap_content"/>
     <TextView
@@ -31,6 +38,8 @@
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="phone"
+        tools:ignore="HardcodedText"
         android:layout_weight="1"
         android:layout_height="wrap_content"/>
     <TextView
@@ -38,6 +47,8 @@
         android:layout_width="0dp"
         android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="average rating"
+        tools:ignore="HardcodedText"
         android:layout_weight="1"
         android:layout_height="wrap_content"/>
 </LinearLayout>
