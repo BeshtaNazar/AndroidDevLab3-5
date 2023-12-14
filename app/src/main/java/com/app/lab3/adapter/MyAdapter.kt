@@ -36,9 +36,9 @@ class MyAdapter(private val myList: LiveData<List<Student>>) :
         override fun bind(item: Student) {
             itemBinding.studentFirstName.text = item.firstName
             itemBinding.studentSecondName.text = item.secondName
-            itemBinding.studentBirthDate.text = item.birthDate
-            itemBinding.studentPhoneNumber.text = item.phoneNumber
-            itemBinding.studentAverageRating.text = item.averageRating.toString()
+            itemBinding.studentBirthDate.text = item.birthDate.toString()
+//            itemBinding.studentPhoneNumber.text = item.phoneNumber
+//            itemBinding.studentAverageRating.text = item.averageRating.toString()
         }
 
     }
